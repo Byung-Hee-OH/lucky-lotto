@@ -29,6 +29,14 @@ function speakNumber(num) {
   window.speechSynthesis.speak(utter);
 }
 
+function getBallColor(num) {
+  if (num < 10) return "#fdd835";     // 노랑
+  else if (num < 20) return "#42a5f5"; // 파랑
+  else if (num < 30) return "#ef5350"; // 빨강
+  else if (num < 40) return "#66bb6a"; // 초록
+  else return "#9e9e9e";               // 회색
+}
+
 function displayNumbersSequentially(nums) {
   numberDisplay.innerHTML = "";
   let i = 0;
@@ -40,6 +48,7 @@ function displayNumbersSequentially(nums) {
     const span = document.createElement("span");
     span.className = "ball";
     span.textContent = nums[i];
+    span.style.backgroundColor = getBallColor(nums[i]);  // 색상 설정
     numberDisplay.appendChild(span);
     speakNumber(nums[i]);
     i++;
